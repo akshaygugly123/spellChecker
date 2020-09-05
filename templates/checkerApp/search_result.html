@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block contentEnd %}
+    <div class="container">
+            <p class="flow-text">Exact word</p>
+            {% if word %}
+                <div class="row">
+                    <div class="col s12 m6">
+                        <div class="card blue-grey darken-1">
+                            <div class="card-content white-text">
+                            <span class="card-title">{{word.word}} ({{word.partsOfSpeech}})</span>
+                            <p>{{word.meaning}}</p>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="row">
+                    <div class="col s12 m6">
+                        <div class="card blue-grey darken-1">
+                            <div class="card-content white-text">
+                            <span class="card-title">No exact word found</span>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            {% endif %}
+    </div>
+    <div class="container">
+            <p class="flow-text">Similar word</p>
+            {% for word in word_list %}
+                <div class="row">
+                    <div class="col s12 m6">
+                        <div class="card blue-grey darken-1">
+                            <div class="card-content white-text">
+                            <span class="card-title">{{word.word}} ({{word.partsOfSpeech}})</span>
+                            <p>{{word.meaning}}</p>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            {% endfor %}
+    </div>
+{% endblock contentEnd %}

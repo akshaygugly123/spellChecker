@@ -1,0 +1,46 @@
+{% load static %}
+
+<html>
+    <head>
+        <title>
+            Speller
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body>
+        <nav class="nav-extended">
+            <div class="nav-wrapper">
+              <a href="#" class="brand-logo center">Speller</a>
+            </div>
+        </nav>
+        <div class="container center">
+            {% block formContent %}
+                <div class="center">
+                    <form action="{% url 'search_result' %}" method="post" class="col s12">
+                        {% csrf_token %}
+                        <div class="">
+                            <div class="input-field col offset-m3">
+                                  <i class="material-icons prefix">edit</i>
+                                  <input id="icon_prefix" type="text" class="validate" name="word">
+                                  <label for="icon_prefix">Type and submit the word to search</label>
+                            </div>
+                        </div>
+                        <div class="">
+                            <div class="input-field col offset-m3">
+                                <button class="btn waves-effect waves-light" type="submit" name="action">Search
+                                <i class="material-icons right">search</i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            {% endblock formContent %}
+        </div>
+        {% block contentEnd %}
+        {% endblock contentEnd %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    </body>
+</html>
